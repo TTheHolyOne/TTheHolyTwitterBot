@@ -12,7 +12,7 @@ OPTIONS:
 8: Quit\n
 <br>
 <h1>SHOWCASE: </h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EErbfxHN2-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/embed/EErbfxHN2-o
 <h1>How to install it</h1> <br>
 <p>You need to install tweepy, pandas, textblob modules</p>
 <br>
