@@ -17,7 +17,6 @@ from textblob import TextBlob
 import sys
 import random
 
-
 #user credentials to authenticate API
 #you will get these credentilas when creating a developer account on Twitter
 consumer_key = "Hey! Go to https://developer.twitter.com/en/portal/projects-and-apps and get your own keys! :D"
@@ -52,7 +51,8 @@ OPTIONS:
 4: Update your status\n
 5: Follow A User\n
 6: See who you have blocked\n
-7: Quit\n
+7: About
+8: Quit\n
 """)
     time.sleep(1)
     if options == '1':
@@ -123,6 +123,24 @@ OPTIONS:
             print(block.name)
         twitterbotoptions()
     elif options == '7':
+        input("""
+
+About TTheHolyTwitterBot:
+
+Developer:
+TTheHolyOne#1642
+
+This is a bot where you can do fun stuff!
+It is constantly updated and I quite enjoy it.
+You can change your status, follow, tweet, follow all followers, track tweets, see blocked users etc!
+
+VERSION 2
+
+PRESS ENTER TO QUIT....
+
+""")
+        twitterbotoptions()
+    elif options == '8':
         print("Goodbye!")
         time.sleep(1)
         sys.exit()
