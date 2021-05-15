@@ -6,6 +6,8 @@ ttheholyone.com
 TTheHolyOne#1642
 
 My Twitter Bot
+
+This bot is a cool bot that I find awesome!
 '''
 #Important
 import tweepy
@@ -15,11 +17,12 @@ from textblob import TextBlob
 import sys
 import random
 
-#Very important or bot wont work
-consumer_key = ""
-consumer_secret = ""
-access_token = ""
-access_token_secret = ""
+#user credentials to authenticate API
+#you will get these credentilas when creating a developer account on Twitter
+consumer_key = "Your Key Here"
+consumer_secret = "Your Key Here"
+access_token = "Your Key Here"
+access_token_secret = "Your Key Here"
 # Very Important
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -29,8 +32,18 @@ api = tweepy.API(auth,wait_on_rate_limit=True)
 
 tweets = []
 print('Hello there!\nWelcome to TTheHolyTwitterBot!')
+
 def twitterbotoptions():
-    options = input('\n\n1: Tweet Scraper and Analysis\n2: Follow all your followers\n3: Quit\n')
+    options = input("""
+
+OPTIONS:
+
+1: Tweet Scraper and Analysis\n
+2: Follow all your followers\n
+3: Tweet\n
+4: Update your status\n
+5: Quit\n
+""")
     time.sleep(1)
     if options == '1':
         print('Okay lets do this!\n\n')
@@ -48,6 +61,8 @@ def twitterbotoptions():
         for tweet in public_tweets:
             print(tweet.text)
 
+
+            #Step 4 Perform Sentiment Analysis on Tweets
             analysis = TextBlob(tweet.text)
             print(analysis.sentiment)
         print('Time to scrape..... Wait for it to be finished\n')
@@ -81,6 +96,16 @@ def twitterbotoptions():
         print(f'Done')
         twitterbotoptions()
     elif options == '3':
+        tweetstuff = input("Please enter a string of text you would like to tweet: \n")
+        api.update_status(f"{tweetstuff}")
+        twitterbotoptions()
+    elif options == '4':
+        tweetstatus = input("Please choose a status you want: \n")
+        api.update_profile(description=f"{tweetstatus}")
+        twitterbotoptions()
+    elif options == '5':
+        print("Goodbye!")
+        time.sleep(1)
         sys.exit()
 twitterbotoptions()
 print('Shutting down..')
