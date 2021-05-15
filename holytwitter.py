@@ -17,16 +17,24 @@ from textblob import TextBlob
 import sys
 import random
 
+
 #user credentials to authenticate API
 #you will get these credentilas when creating a developer account on Twitter
-consumer_key = "Your Key Here"
-consumer_secret = "Your Key Here"
-access_token = "Your Key Here"
-access_token_secret = "Your Key Here"
+consumer_key = "Hey! Go to https://developer.twitter.com/en/portal/projects-and-apps and get your own keys! :D"
+consumer_secret = "Hey! Go to https://developer.twitter.com/en/portal/projects-and-apps and get your own keys! :D"
+access_token = "Hey! Go to https://developer.twitter.com/en/portal/projects-and-apps and get your own keys! :D"
+access_token_secret = "Hey! Go to https://developer.twitter.com/en/portal/projects-and-apps and get your own keys! :D"
 # Very Important
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth,wait_on_rate_limit=True)
+
+
+try:
+    api.verify_credentials()
+    print("Authentication OK")
+except:
+    print("Error during authentication\nMaybe a invalid key?\nIf you dont have any keys:\nHey! Go to https://developer.twitter.com/en/portal/projects-and-apps and get your own keys! :D\n")
 
 #creating a list of tweets
 
@@ -42,7 +50,9 @@ OPTIONS:
 2: Follow all your followers\n
 3: Tweet\n
 4: Update your status\n
-5: Quit\n
+5: Follow A User\n
+6: See who you have blocked\n
+7: Quit\n
 """)
     time.sleep(1)
     if options == '1':
@@ -104,6 +114,15 @@ OPTIONS:
         api.update_profile(description=f"{tweetstatus}")
         twitterbotoptions()
     elif options == '5':
+        folowuser = input("Please enter a twitter username to follow: \n")
+        api.create_friendship(f"{folowuser}")
+        twitterbotoptions()
+    elif options == '6':
+        print("BLOCKED USERS: \n\n")
+        for block in api.blocks():
+            print(block.name)
+        twitterbotoptions()
+    elif options == '7':
         print("Goodbye!")
         time.sleep(1)
         sys.exit()
