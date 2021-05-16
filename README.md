@@ -18,6 +18,7 @@ pip install textblob
 pip install pandas
 pip install tweepy
 pip install tk
+pip install colorama
  All these commands
 </p>
 <br>
