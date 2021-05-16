@@ -38,10 +38,10 @@ import webbrowser
 
 #user credentials to authenticate API
 #you will get these credentilas when creating a developer account on Twitter
-consumer_key = "YOUR KEY HERE WATCH https://www.youtube.com/watch?v=0VsyRO8Z9u4 TO FIND OUT HOW TO GET IT"
-consumer_secret = "YOUR KEY HERE WATCH https://www.youtube.com/watch?v=0VsyRO8Z9u4 TO FIND OUT HOW TO GET IT"
-access_token = "YOUR KEY HERE WATCH https://www.youtube.com/watch?v=0VsyRO8Z9u4 TO FIND OUT HOW TO GET IT"
-access_token_secret = "YOUR KEY HERE WATCH https://www.youtube.com/watch?v=0VsyRO8Z9u4 TO FIND OUT HOW TO GET IT"
+consumer_key = "put api key here"
+consumer_secret = "put api key here"
+access_token = "put api key here" 
+access_token_secret = "put api key here"
 # Very Important
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -50,7 +50,8 @@ api = tweepy.API(auth,wait_on_rate_limit=True)
 window = tk.Tk(className='TTheHolyTwitterBot - V1')
 photo = PhotoImage(file = "background.gif")
 window.iconphoto(False, photo)
-window.geometry('1000x650')
+window.geometry('1000x300')
+window.configure(bg='#0b132b')
 
 
 top = Frame(window)
@@ -142,7 +143,13 @@ There are plenty of tutorials online if you are stuck :D
 try:
     api.verify_credentials()
     authmsg = tk.Label(
-    text="Authentication OK\nPlease note your keys still may be incorrect | This just means we could connect to twitter api\nIf you get ratelimited wait a few minutes and try again", width=100, height=3
+    text="\n\n\nAuthentication OK\nPlease note your keys still may be incorrect | This just means we could connect to twitter api\nIf you get ratelimited wait a few minutes and try again",
+    width=100,
+    height=7,
+    justify=CENTER,
+bg='#0b132b',
+fg='#3a506b',
+    borderwidth = 0,
     )
     authmsg.pack()
 except:
@@ -151,7 +158,7 @@ except:
 
 # welcome message
 
-welcome = tk.Label(text="Welcome to TTheHolyTwitterBot! Have Fun!\n", fg="lightcyan")
+welcome = tk.Label(text="Welcome to TTheHolyTwitterBot! Have Fun!\n", bg='#0b132b',fg="#8C81D4",borderwidth=0,)
 welcome.pack()
 
 
@@ -161,218 +168,228 @@ welcome.pack()
 
 # Tweet scraper and analysis button
 seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
-seper.pack()
+seper.pack(in_=bottom, side=RIGHT)
 
 button1 = tk.Button(
-    text="Tweet Scraper and Analysis",
-    width=20,
+    text="Scraper & Analysis",
+width = 16,
 height=2,
-bg='#567', fg='White',
+bg='#3a506b', fg='White',
 justify=CENTER,
 padx=10,
-borderwidth=0,
+borderwidth=1,
 command=runscrape
 
 )
-button1.pack()
+button1.pack(in_=bottom, side=RIGHT)
 
 # follow all your followers button
 seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
-seper.pack()
-
-button2 = tk.Button(
-    text="Follow all your followers",
-width=20,
-height=2,
-justify=CENTER,
-padx=10,
-bg='#567', fg='White',
-borderwidth=0,
-command=followalll
-)
-button2.pack()
-
-# Tweet button
-seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
-seper.pack()
-
-button3 = tk.Button(
-    text="Tweet",
-width=20,
-height=2,
-padx=10,
-bg='#567', fg='White',
-justify=CENTER,
-borderwidth=0,
-command=tweetatweet
-)
-button3.pack()
-
-# Update your status button
-seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
-seper.pack()
-
-button4 = tk.Button(text="Update Your Status", width=20, height=2, bg='#567', fg='White',justify=CENTER, command=statusupdateyeah,borderwidth=0,
- padx=10)
-button4.pack()
-
-# Follow a user button
-seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
-seper.pack()
-
-button5 = tk.Button(
-    text="Follow a User",
-    width=20,
-height=2,
-padx=10,
-bg='#567', fg='White',
-justify=CENTER,
-borderwidth=0,
-
-command=followaperson
-)
-button5.pack()
-
-# Blocked Users Button
-seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
-seper.pack()
-
-button6 = tk.Button(
-text="See Who You Have Blocked",
-width=20,
-height=2,
-padx=10,
-justify=CENTER,
-bg='#567', fg='White',
-borderwidth=0,
-
-command=blockedusers
-)
-button6.pack()
-
-# Auto Tweet Button
-seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
-seper.pack()
+seper.pack(in_=bottom, side=RIGHT)
 
 button7 = tk.Button(
 text="Auto Tweeter",
-width=20,
+width = 15,
 height=2,
 padx=10,
 justify=CENTER,
-bg='#567', fg='White',
-borderwidth=0,
+bg='#3a506b', fg='White',
+borderwidth=1,
 
 command=autotwe
 )
-button7.pack()
+button7.pack(in_=bottom, side=RIGHT)
+seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
+seper.pack(in_=bottom, side=RIGHT)
+button3 = tk.Button(
+    text="Tweet",
+width = 15,
+height=2,
+padx=10,
+bg='#3a506b', fg='White',
+justify=CENTER,
+borderwidth=1,
+command=tweetatweet
+)
+button3.pack(in_=bottom, side=RIGHT)
+seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
+seper.pack(in_=bottom, side=RIGHT)
+button2 = tk.Button(
+    text="Follow your Followers",
+width = 15,
+height=2,
+justify=CENTER,
+padx=10,
+bg='#3a506b', fg='White',
+borderwidth=1,
+command=followalll
+)
+button2.pack(in_=bottom, side=RIGHT)
+# Update your status button
+seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
+seper.pack(in_=bottom, side=RIGHT)
+button5 = tk.Button(
+    text="Follow a User",
+width = 15,
+height=2,
+padx=10,
+bg='#3a506b', fg='White',
+justify=CENTER,
+borderwidth=1,
+
+command=followaperson
+)
+button5.pack(in_=bottom, side=RIGHT)
+# Blocked Users Button
+seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
+seper.pack(in_=bottom, side=RIGHT)
+
+button6 = tk.Button(
+text="Blocked Users",
+width = 15,
+height=2,
+padx=10,
+justify=CENTER,
+bg='#3a506b', fg='White',
+borderwidth=1,
+
+command=blockedusers
+)
+button6.pack(in_=bottom, side=RIGHT)
+
+seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
+seper.pack(in_=bottom, side=RIGHT)
+
+button4 = tk.Button(text="Update Status", width = 15, height=2, bg='#3a506b', fg='White',justify=CENTER, command=statusupdateyeah,borderwidth=1,
+ padx=10)
+button4.pack(in_=bottom, side=RIGHT)
+
+
+# Auto Tweet Button
+seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
+seper.pack(in_=bottom, side=RIGHT)
+
+
+
+butons1 = tk.Button(
+text="",
+width=2,
+height=2,
+padx=0,
+borderwidth=0,
+justify=LEFT,
+bg="#0b132b",
+)
+butons1.pack(in_=top, side=LEFT)
+discord = tk.Button(
+text="Discord",
+width=20,
+height=2,
+bg='#3a506b', fg='Red',
+justify=LEFT,
+command=openwebdiscord
+)
+discord.pack(in_=top, side=LEFT)
+butons11 = tk.Button(
+text=" ",
+width=2,
+height=2,
+borderwidth=0,
+bg="#0b132b",
+justify=RIGHT
+)
+butons11.pack(in_=top, side=LEFT)
 
 # About Button
 seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
-seper.pack()
-
-
-button8 = tk.Button(
-text="About",
-width=20,
-padx=10,
-height=2,
-bg='#567', fg='Blue',
-borderwidth=0,
-
-justify=CENTER,
-command=about
-)
-button8.pack()
-# About Button
-seper = tk.Label(text="", borderwidth=0,width=0,height=0)
-seper.pack()
+seper.pack(in_=bottom, side=RIGHT)
 
 
 button9 = tk.Button(
 text="Help",
 width=20,
 height=2,
-bg='#567', fg='Pink',
-borderwidth=0,
-
+bg='#3a506b', fg='#49A078',
 justify=CENTER,
 command=connecthelp
 )
-button9.pack(in_=bottom, side=LEFT)
+button9.pack(in_=top, side=LEFT)
 # Quit Button
 seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
 seper.pack()
 butons = tk.Button(
-text=" ",
+text="",
 width=2,
 height=2,
+bg="#0b132b",
 borderwidth=0,
 justify=CENTER
 )
-butons.pack(in_=bottom, side=LEFT)
+butons.pack(in_=top, side=LEFT)
 button10 = tk.Button(
 text="Quit",
 width=20,
 height=2,
-borderwidth=0,
-
-bg='#567', fg='Red',
-justify=RIGHT,
+bg='#3a506b', fg='Red',
+justify=LEFT,
 command=quit
 )
-button10.pack(in_=bottom, side=RIGHT)
-butons1 = tk.Button(
+button10.pack(in_=top, side=LEFT)
+seper = tk.Label(text="\n", borderwidth=0,width=0,height=1)
+seper.pack()
+butonss = tk.Button(
 text=" ",
 width=2,
 height=2,
+bg="#0b132b",
 borderwidth=0,
-justify=LEFT
+justify=CENTER
 )
-butons1.pack(side=LEFT)
-discord = tk.Button(
-text="Discord",
+butonss.pack(in_=top, side=LEFT)
+button8 = tk.Button(
+text="About",
 width=20,
+padx=10,
 height=2,
-borderwidth=0,
-bg='#567', fg='Red',
+bg='#3a506b', fg='#49A078',
 justify=LEFT,
-command=openwebdiscord
+command=about
 )
-discord.pack(side=LEFT)
-butons11 = tk.Button(
+button8.pack(in_=top, side=LEFT)
+
+butonsss = tk.Button(
 text=" ",
 width=2,
 height=2,
+bg="#0b132b",
 borderwidth=0,
-justify=RIGHT
+justify=CENTER
 )
-butons11.pack(side=RIGHT)
+butonsss.pack(in_=top, side=LEFT)
+
 youtube = tk.Button(
 text="Youtube",
 width=20,
 height=2,
-borderwidth=0,
-bg='#567', fg='Red',
+bg='#3a506b', fg='Red',
 justify=RIGHT,
 command=openwebyt
 )
-youtube.pack(side=RIGHT)
+youtube.pack(in_=top, side=RIGHT)
 
 
-changeOnHover(button1, "black", "#567")
-changeOnHover(button2, "black", "#567")
-changeOnHover(button3, "black", "#567")
-changeOnHover(button4, "black", "#567")
-changeOnHover(button5, "black", "#567")
-changeOnHover(button6, "black", "#567")
-changeOnHover(button7, "black", "#567")
-changeOnHover(button8, "black", "#567")
-changeOnHover(button9, "black", "#567")
-changeOnHover(button10, "black", "#567")
-changeOnHover(discord, "black", "#567")
-changeOnHover(youtube, "black", "#567")
-
+changeOnHover(button1, "black", "#3a506b")
+changeOnHover(button2, "black", "#3a506b")
+changeOnHover(button3, "black", "#3a506b")
+changeOnHover(button4, "black", "#3a506b")
+changeOnHover(button5, "black", "#3a506b")
+changeOnHover(button6, "black", "#3a506b")
+changeOnHover(button7, "black", "#3a506b")
+changeOnHover(button8, "black", "#3a506b")
+changeOnHover(button9, "black", "#3a506b")
+changeOnHover(button10, "black", "#3a506b")
+changeOnHover(discord, "black", "#3a506b")
+changeOnHover(youtube, "black", "#3a506b")
 
 # Starts window
 window.mainloop()
