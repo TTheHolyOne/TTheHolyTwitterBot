@@ -1,3 +1,5 @@
+YOU NEED ALL THESE PACKAGES
+
 pip install textblob
 pip install pandas
 pip install tweepy
