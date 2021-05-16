@@ -16,14 +16,18 @@ import time
 from textblob import TextBlob
 import sys
 import random
+from random import randint
+import colorama
+from colorama import *
 
+init()
 
 #user credentials to authenticate API
 #you will get these credentilas when creating a developer account on Twitter
-consumer_key = "Enter your key here"
-consumer_secret = "Enter your key here"
-access_token = "Enter your key here"
-access_token_secret = "Enter your key here"
+consumer_key = "YOUR KEY HERE WATCH https://www.youtube.com/watch?v=0VsyRO8Z9u4 TO FIND OUT HOW TO GET IT"
+consumer_secret = "YOUR KEY HERE WATCH https://www.youtube.com/watch?v=0VsyRO8Z9u4 TO FIND OUT HOW TO GET IT"
+access_token = "YOUR KEY HERE WATCH https://www.youtube.com/watch?v=0VsyRO8Z9u4 TO FIND OUT HOW TO GET IT"
+access_token_secret = "YOUR KEY HERE WATCH https://www.youtube.com/watch?v=0VsyRO8Z9u4 TO FIND OUT HOW TO GET IT"
 # Very Important
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -39,7 +43,31 @@ except:
 #creating a list of tweets
 
 tweets = []
-print('Hello there!\nWelcome to TTheHolyTwitterBot!')
+print(Fore.RED + 'Hello there!\nWelcome to TTheHolyTwitterBot!\nPlease wait for GUI to open...')
+
+
+def autots():
+    print("This will tweet out and change your status infinitely until you close this window\n\n")
+    timeperchange = int(input("Please choose a number for time before every change: \n"))
+    timeperchange2 = int(input("Please choose another number for time before every change: \n"))
+    print(f"Your status and tweet will tweet every "+str(timeperchange)+" - "+str(timeperchange2)+ " seconds")
+    messageuser = input("Please choose a message to tweet out every "+str(timeperchange)+" - "+str(timeperchange2)+" seconds: \n")
+    funtweetstatus = input("\n\nPlease choose a status to change every "+str(timeperchange)+" - "+str(timeperchange2)+" seconds: \n")
+    input("Okay...\nClose this window to stop the tweets and status change\n\nPress enter to proceed")
+    timerr = 0
+    try:
+        while True:
+            randomtime = randint(timeperchange, timeperchange2)
+            print(randomtime)
+            time.sleep(randomtime)
+            timerr +=1
+            api.update_status(f"{messageuser}\n\nFun Fact: I have tweeted this "+str(timerr)+" times!")
+            api.update_profile(description=f"{funtweetstatus}\n\nFun Fact: I have changed this status "+str(timerr)+" times!")
+    except:
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\nIt seems that you are being ratelimited...\nTry auto tweeter again later")
+        time.sleep(3)
+        sys.exit()
+
 def scrapestuff():
     print('Okay lets do this!\n\n')
     #specify whose tweets you're scraping
