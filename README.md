@@ -13,6 +13,10 @@ OPTIONS:
 9: Quit\n
 <br>
 <h1>How to install it</h1> <br>
+
+WATCH THIS VIDEO:
+https://www.youtube.com/watch?v=0VsyRO8Z9u4
+
 <p>go inside of the directory of the files in command prompt and do 
 pip install textblob
 pip install pandas
